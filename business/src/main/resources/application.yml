@@ -1,0 +1,55 @@
+server:
+  port: 8888
+
+spring:
+  resources:
+    static-locations: classpath:/static/
+
+  #模板
+  freemarker:
+    suffix: .ftl
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    settings:
+      classic_compatible: true
+      number_format: 0.##########
+
+
+  #mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    #连接池
+    druid:
+      filters: stat
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select now()
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+
+
+#mybatis
+mybatis:
+  mapper-locations: classpath:/com/neuedu/mapper/*.xml
+  type-aliases-package: com.neuedu.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+    map-underscore-to-camel-case: true
+
+
+#log4j2配置
+logging:
+  config: classpath:log4j2-dev.xml
+  level:
+    com.neuedu.dao: DEBUG

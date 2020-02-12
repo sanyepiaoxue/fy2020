@@ -1,0 +1,16 @@
+10:16:35.741 [main] INFO  com.neuedu.BusinessApplication - Starting BusinessApplication on LAPTOP-DJSFELAJ with PID 25048 (D:\workspace\business\target\classes started by 86189 in D:\workspace\business)
+10:16:35.747 [main] INFO  com.neuedu.BusinessApplication - No active profile set, falling back to default profiles: default
+10:16:36.134 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+10:16:36.385 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+10:16:36.385 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+10:16:36.386 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+10:16:36.441 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+10:16:36.517 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
+10:16:36.529 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
+10:16:37.188 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+10:16:37.541 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+10:16:37.556 [main] INFO  com.neuedu.BusinessApplication - Started BusinessApplication in 2.156 seconds (JVM running for 3.468)
+10:17:21.173 [http-nio-8888-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+10:17:33.265 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.UserMapper.selectByPrimaryKey - ==>  Preparing: select id, username, password, userpic, email, phone, question, answer, role, create_time, update_time, ip from neuedu_user where id = ? 
+10:17:33.292 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.UserMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+10:17:33.337 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.UserMapper.selectByPrimaryKey - <==      Total: 1
