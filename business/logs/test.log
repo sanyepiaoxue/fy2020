@@ -1,16 +1,98 @@
-10:16:35.741 [main] INFO  com.neuedu.BusinessApplication - Starting BusinessApplication on LAPTOP-DJSFELAJ with PID 25048 (D:\workspace\business\target\classes started by 86189 in D:\workspace\business)
-10:16:35.747 [main] INFO  com.neuedu.BusinessApplication - No active profile set, falling back to default profiles: default
-10:16:36.134 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-10:16:36.385 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
-10:16:36.385 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-10:16:36.386 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
-10:16:36.441 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-10:16:36.517 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
-10:16:36.529 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
-10:16:37.188 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-10:16:37.541 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
-10:16:37.556 [main] INFO  com.neuedu.BusinessApplication - Started BusinessApplication in 2.156 seconds (JVM running for 3.468)
-10:17:21.173 [http-nio-8888-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-10:17:33.265 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.UserMapper.selectByPrimaryKey - ==>  Preparing: select id, username, password, userpic, email, phone, question, answer, role, create_time, update_time, ip from neuedu_user where id = ? 
-10:17:33.292 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.UserMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
-10:17:33.337 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.UserMapper.selectByPrimaryKey - <==      Total: 1
+23:38:49.188 [main] INFO  com.neuedu.BusinessApplication - Starting BusinessApplication on LAPTOP-DJSFELAJ with PID 19128 (D:\workspace\business\target\classes started by 86189 in D:\workspace\business)
+23:38:49.194 [main] INFO  com.neuedu.BusinessApplication - No active profile set, falling back to default profiles: default
+23:38:49.616 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+23:38:49.874 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+23:38:49.874 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+23:38:49.875 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+23:38:49.933 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+23:38:50.006 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
+23:38:50.021 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
+23:38:50.672 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+23:38:50.969 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+23:38:51.063 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+23:38:51.079 [main] INFO  com.neuedu.BusinessApplication - Started BusinessApplication in 2.208 seconds (JVM running for 3.525)
+23:38:57.865 [http-nio-8888-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:38:57.905 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==>  Preparing: select id, parent_id, main_image, name, status, sort_order, create_time, update_time from neuedu_category where id = ? 
+23:38:57.922 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==> Parameters: 78(Integer)
+23:38:57.940 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - <==      Total: 1
+23:38:57.943 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==>  Preparing: select id, parent_id, name, status, sort_order, create_time, update_time from neuedu_category where parent_id=? 
+23:38:57.943 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==> Parameters: 78(Integer)
+23:38:57.945 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - <==      Total: 1
+23:38:57.945 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==>  Preparing: select id, parent_id, main_image, name, status, sort_order, create_time, update_time from neuedu_category where id = ? 
+23:38:57.945 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==> Parameters: 79(Integer)
+23:38:57.946 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - <==      Total: 1
+23:38:57.946 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==>  Preparing: select id, parent_id, name, status, sort_order, create_time, update_time from neuedu_category where parent_id=? 
+23:38:57.946 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==> Parameters: 79(Integer)
+23:38:57.947 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - <==      Total: 0
+23:38:57.985 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==>  Preparing: SELECT count(0) FROM neuedu_product WHERE category_id IN (?, ?) 
+23:38:57.985 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==> Parameters: 78(Integer), 79(Integer)
+23:38:57.990 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - <==      Total: 1
+23:38:57.992 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, create_time, update_time, sub_images, detail from neuedu_product WHERE category_id in ( ? , ? ) LIMIT ? 
+23:38:57.992 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==> Parameters: 78(Integer), 79(Integer), 10(Integer)
+23:38:57.996 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - <==      Total: 3
+23:40:18.175 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==>  Preparing: SELECT count(0) FROM neuedu_product WHERE name LIKE ? 
+23:40:18.176 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==> Parameters: %mi%(String)
+23:40:18.178 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - <==      Total: 1
+23:40:18.178 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, create_time, update_time, sub_images, detail from neuedu_product WHERE name like ? LIMIT ? 
+23:40:18.179 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==> Parameters: %mi%(String), 10(Integer)
+23:40:18.181 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - <==      Total: 3
+23:40:27.441 [http-nio-8888-exec-7] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==>  Preparing: SELECT count(0) FROM neuedu_product WHERE name LIKE ? 
+23:40:27.441 [http-nio-8888-exec-7] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==> Parameters: %mi9%(String)
+23:40:27.443 [http-nio-8888-exec-7] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - <==      Total: 1
+23:40:27.443 [http-nio-8888-exec-7] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, create_time, update_time, sub_images, detail from neuedu_product WHERE name like ? LIMIT ? 
+23:40:27.443 [http-nio-8888-exec-7] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==> Parameters: %mi9%(String), 10(Integer)
+23:40:27.445 [http-nio-8888-exec-7] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - <==      Total: 1
+23:42:46.551 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==>  Preparing: select id, parent_id, main_image, name, status, sort_order, create_time, update_time from neuedu_category where id = ? 
+23:42:46.553 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==> Parameters: 78(Integer)
+23:42:46.557 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - <==      Total: 1
+23:42:46.557 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==>  Preparing: select id, parent_id, name, status, sort_order, create_time, update_time from neuedu_category where parent_id=? 
+23:42:46.558 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==> Parameters: 78(Integer)
+23:42:46.560 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - <==      Total: 1
+23:42:46.561 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==>  Preparing: select id, parent_id, main_image, name, status, sort_order, create_time, update_time from neuedu_category where id = ? 
+23:42:46.561 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==> Parameters: 79(Integer)
+23:42:46.562 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - <==      Total: 1
+23:42:46.562 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==>  Preparing: select id, parent_id, name, status, sort_order, create_time, update_time from neuedu_category where parent_id=? 
+23:42:46.562 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==> Parameters: 79(Integer)
+23:42:46.563 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - <==      Total: 0
+23:42:46.566 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==>  Preparing: SELECT count(0) FROM neuedu_product WHERE name LIKE ? AND category_id IN (?, ?) 
+23:42:46.566 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==> Parameters: %mi%(String), 78(Integer), 79(Integer)
+23:42:46.568 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - <==      Total: 1
+23:42:46.569 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, create_time, update_time, sub_images, detail from neuedu_product WHERE name like ? and category_id in ( ? , ? ) LIMIT ? 
+23:42:46.570 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==> Parameters: %mi%(String), 78(Integer), 79(Integer), 10(Integer)
+23:42:46.572 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - <==      Total: 3
+23:44:51.536 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==>  Preparing: select id, parent_id, main_image, name, status, sort_order, create_time, update_time from neuedu_category where id = ? 
+23:44:51.537 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==> Parameters: 78(Integer)
+23:44:51.541 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - <==      Total: 1
+23:44:51.542 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==>  Preparing: select id, parent_id, name, status, sort_order, create_time, update_time from neuedu_category where parent_id=? 
+23:44:51.542 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==> Parameters: 78(Integer)
+23:44:51.544 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - <==      Total: 1
+23:44:51.544 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==>  Preparing: select id, parent_id, main_image, name, status, sort_order, create_time, update_time from neuedu_category where id = ? 
+23:44:51.544 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==> Parameters: 79(Integer)
+23:44:51.545 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - <==      Total: 1
+23:44:51.546 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==>  Preparing: select id, parent_id, name, status, sort_order, create_time, update_time from neuedu_category where parent_id=? 
+23:44:51.546 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==> Parameters: 79(Integer)
+23:44:51.547 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - <==      Total: 0
+23:44:51.549 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==>  Preparing: SELECT count(0) FROM neuedu_product WHERE name LIKE ? AND category_id IN (?, ?) 
+23:44:51.549 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==> Parameters: %mi%(String), 78(Integer), 79(Integer)
+23:44:51.550 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - <==      Total: 1
+23:44:51.550 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, create_time, update_time, sub_images, detail from neuedu_product WHERE name like ? and category_id in ( ? , ? ) LIMIT ? 
+23:44:51.550 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==> Parameters: %mi%(String), 78(Integer), 79(Integer), 1(Integer)
+23:44:51.551 [http-nio-8888-exec-8] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - <==      Total: 1
+23:45:14.196 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==>  Preparing: select id, parent_id, main_image, name, status, sort_order, create_time, update_time from neuedu_category where id = ? 
+23:45:14.196 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==> Parameters: 78(Integer)
+23:45:14.198 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - <==      Total: 1
+23:45:14.200 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==>  Preparing: select id, parent_id, name, status, sort_order, create_time, update_time from neuedu_category where parent_id=? 
+23:45:14.201 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==> Parameters: 78(Integer)
+23:45:14.204 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - <==      Total: 1
+23:45:14.205 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==>  Preparing: select id, parent_id, main_image, name, status, sort_order, create_time, update_time from neuedu_category where id = ? 
+23:45:14.205 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - ==> Parameters: 79(Integer)
+23:45:14.207 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.selectByPrimaryKey - <==      Total: 1
+23:45:14.208 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==>  Preparing: select id, parent_id, name, status, sort_order, create_time, update_time from neuedu_category where parent_id=? 
+23:45:14.208 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - ==> Parameters: 79(Integer)
+23:45:14.209 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CategoryMapper.getSubCategorysById - <==      Total: 0
+23:45:14.212 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==>  Preparing: SELECT count(0) FROM neuedu_product WHERE name LIKE ? AND category_id IN (?, ?) 
+23:45:14.213 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - ==> Parameters: %mi%(String), 78(Integer), 79(Integer)
+23:45:14.213 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword_COUNT - <==      Total: 1
+23:45:14.214 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, create_time, update_time, sub_images, detail from neuedu_product WHERE name like ? and category_id in ( ? , ? ) LIMIT ?, ? 
+23:45:14.214 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - ==> Parameters: %mi%(String), 78(Integer), 79(Integer), 1(Integer), 1(Integer)
+23:45:14.216 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.findProducsByCategoryIdsAndkeyword - <==      Total: 1

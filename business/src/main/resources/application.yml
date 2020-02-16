@@ -4,6 +4,8 @@ server:
 spring:
   resources:
     static-locations: classpath:/static/
+  thymeleaf:
+    mode: HTML5
 
   #模板
   freemarker:
@@ -39,6 +41,7 @@ spring:
       max-open-prepared-statements: 20
 
 
+
 #mybatis
 mybatis:
   mapper-locations: classpath:/com/neuedu/mapper/*.xml
@@ -53,3 +56,7 @@ logging:
   config: classpath:log4j2-dev.xml
   level:
     com.neuedu.dao: DEBUG
+
+
+upload:
+  path: D:/upload/temp

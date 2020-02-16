@@ -1,26 +1,42 @@
 package com.neuedu.web;
-
-
-import com.neuedu.dao.UserMapper;
+import com.neuedu.common.Consts;
+import com.neuedu.common.ServerResponse;
 import com.neuedu.pojo.User;
-import org.springframework.stereotype.Controller;
+import com.neuedu.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-//测试类（逆向工程初期测试使用）
-@Controller
+import javax.servlet.http.HttpSession;
+
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    IUserService userService;
 
-    @Resource
-    UserMapper userMapper;
+    //注册
+    @RequestMapping("/register")
+    public ServerResponse register(User user){
+        return userService.registerLogic(user);
+    }
 
-    @RequestMapping("/find")
-    @ResponseBody
-    public User find(){
-        User user = userMapper.selectByPrimaryKey(1);
+    //登录接口
+    @RequestMapping("/login")
+    public ServerResponse login(String username, String password, HttpSession session){
+        ServerResponse response = userService.loginLogic(username,password);
+        if (response.isSucess()){
+            //登陆成功
+            session.setAttribute(Consts.USER,response.getData());
+        }
+        return response;
+    }
 
-        return user;
+    //退出登录接口
+    @RequestMapping("/logout")
+    public ServerResponse logout(HttpSession session){
+        session.removeAttribute(Consts.USER);
+        return ServerResponse.serverResponseBySucess();
     }
 }
