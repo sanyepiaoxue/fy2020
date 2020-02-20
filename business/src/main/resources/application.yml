@@ -60,3 +60,17 @@ logging:
 
 upload:
   path: D:/upload/temp
+
+redis:
+  maxTotal: 8
+  maxIdle: 8
+  minIdle: 0
+  blockWhenExhausted: true
+  maxWaitMillis: 10000
+  testOnBorrow: true
+  testOnReturn: true
+  jmxEnabled: true
+  redisHost: 182.92.222.63
+  redisPort: 6379
+  redisPassword: Hanlei2020520
+  timeout: 1000

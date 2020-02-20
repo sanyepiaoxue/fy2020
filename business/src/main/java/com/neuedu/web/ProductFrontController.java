@@ -33,4 +33,9 @@ public class ProductFrontController {
 
         return productService.list(categoryId,keyword,pageNum,pageSize,orderBy);
     }
+
+    @RequestMapping("detail.do")
+    public ServerResponse detail(Integer productId){
+        return productService.detail(productId);
+    }
 }

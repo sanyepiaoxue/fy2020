@@ -29,7 +29,8 @@ public enum StatusEnum {
     UPLOAD_FILENAME_NOT_EMPTY(18,"上传的文件名不能为空"),
     PRODUCT_ADD_FAIL(19,"商品添加失败"),
     UPDATE_PRODUCT_NOT_EXISTS(20,"更新的商品不存在"),
-    PRODUCT_UPDATE_FAIL(21,"商品更新失败")
+    PRODUCT_UPDATE_FAIL(21,"商品更新失败"),
+    PRODUCT_OFFLINEORDELETE_FAIL(22,"商品已经下架或删除")
     ;
 
     private int status;//状态码值
