@@ -30,7 +30,11 @@ public enum StatusEnum {
     PRODUCT_ADD_FAIL(19,"商品添加失败"),
     UPDATE_PRODUCT_NOT_EXISTS(20,"更新的商品不存在"),
     PRODUCT_UPDATE_FAIL(21,"商品更新失败"),
-    PRODUCT_OFFLINEORDELETE_FAIL(22,"商品已经下架或删除")
+    PRODUCT_OFFLINEORDELETE_FAIL(22,"商品已经下架或删除"),
+
+    UPDATE_PRODUCT_CART_FAIL(24,"更新购物车商品失败"),
+    PRODUCT_ADD_CART_FAIL(23,"商品加入购物车失败"),
+    PRODUCT_NOT_EXISTS(25,"商品不存在")
     ;
 
     private int status;//状态码值

@@ -168,6 +168,7 @@ public class ProductServiceImpl implements IProductService {
         vo.setSubImages(product.getSubImages());
         vo.setSubtitle(product.getSubtitle());
         vo.setUpdateTime(DateUtils.date2Str(product.getUpdateTime()));
+        vo.setStock(product.getStock());
 
         return vo;
 
