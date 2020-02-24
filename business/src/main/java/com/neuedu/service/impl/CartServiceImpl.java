@@ -80,6 +80,28 @@ public class CartServiceImpl implements ICartService {
         }
     }
 
+    @Override
+    public ServerResponse findCartByUserIdAndChecked(Integer userId) {
+        if (userId ==null){
+            return ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
+        }
+        List<Cart> cartList = cartMapper.findCartByUserIdAndChecked(userId);
+
+        return ServerResponse.serverResponseBySucess(null,cartList);
+    }
+
+    @Override
+    public ServerResponse deleteBatchByIds(List<Cart> cartList) {
+        if (cartList==null ||cartList.size()==0){
+            return ServerResponse.serverResponseByFail(StatusEnum.PARAM_NOT_EMPTY.getStatus(),StatusEnum.PARAM_NOT_EMPTY.getDesc());
+        }
+        int count = cartMapper.deleteBatch(cartList);
+        if (count<=0){
+            return ServerResponse.serverResponseByFail(StatusEnum.CART_CLEAN_FAIL.getStatus(),StatusEnum.CART_CLEAN_FAIL.getDesc());
+        }
+        return ServerResponse.serverResponseBySucess();
+    }
+
 
     private CartVO getCartVo(Integer userId){
         CartVO cartVO = new CartVO();

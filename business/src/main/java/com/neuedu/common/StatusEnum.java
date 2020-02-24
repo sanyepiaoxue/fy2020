@@ -34,7 +34,17 @@ public enum StatusEnum {
 
     UPDATE_PRODUCT_CART_FAIL(24,"更新购物车商品失败"),
     PRODUCT_ADD_CART_FAIL(23,"商品加入购物车失败"),
-    PRODUCT_NOT_EXISTS(25,"商品不存在")
+    PRODUCT_NOT_EXISTS(25,"商品不存在"),
+
+    ADDRESS_NOT_EMPYT(26,"收货地址不能为空"),
+
+    USER_CART_EMPTY(27,"用户购物车为空"),
+    PRODUCT_STOCK_NOT_FULL(28,"商品库存不足"),
+
+    ORDER_CREATE_FAIL(29,"订单创建失败"),
+    ORDER_ITEM_CREATE_FAIL(30,"订单明细创建失败"),
+    REDUCE_STOCK_FAIL(31,"商品扣库存失败"),
+    CART_CLEAN_FAIL(32,"购物车清空失败")
     ;
 
     private int status;//状态码值

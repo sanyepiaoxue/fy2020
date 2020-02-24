@@ -53,4 +53,8 @@ public interface ProductMapper {
     //按照商品名称和categoryId做检索
     List<Product> findProducsByCategoryIdsAndkeyword(@Param("categoryId") List<Integer> ids,
                                                      @Param("keyword") String keyword);
+
+
+    //商品扣库存接口
+    int  reduceStock(@Param("productId")Integer productId,@Param("stock") Integer stock);
 }

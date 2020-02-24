@@ -1,47 +1,98 @@
-23:47:32.107 [main] INFO  com.neuedu.BusinessApplication - Starting BusinessApplication on LAPTOP-DJSFELAJ with PID 18652 (D:\workspace\business\target\classes started by 86189 in D:\workspace\business)
-23:47:32.123 [main] INFO  com.neuedu.BusinessApplication - No active profile set, falling back to default profiles: default
-23:47:32.782 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-23:47:33.135 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
-23:47:33.136 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-23:47:33.136 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
-23:47:33.229 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-23:47:33.418 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
-23:47:33.430 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
-23:47:34.220 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-23:47:34.630 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
-23:47:34.756 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
-23:47:34.777 [main] INFO  com.neuedu.BusinessApplication - Started BusinessApplication in 3.32 seconds (JVM running for 5.366)
-23:47:49.859 [http-nio-8888-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-23:47:49.917 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.countUsername - ==>  Preparing: select count(*) from neuedu_user where username=? 
-23:47:49.939 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.countUsername - ==> Parameters: abc(String)
-23:47:49.962 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.countUsername - <==      Total: 1
-23:47:49.966 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.findUserByUsernameAndpassword - ==>  Preparing: select id, username, password, email, phone, question, answer, role, create_time, update_time, ip from neuedu_user where username=? and password=? 
-23:47:49.966 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.findUserByUsernameAndpassword - ==> Parameters: abc(String), ecbbcb2ca53760520921aa2962038ce3(String)
-23:47:49.968 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.findUserByUsernameAndpassword - <==      Total: 1
-23:47:52.832 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
-23:47:52.834 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
-23:47:52.839 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
-23:47:52.863 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? and product_id=? 
-23:47:52.864 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - ==> Parameters: 76(Integer), 1(Integer)
-23:47:52.866 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - <==      Total: 1
-23:47:52.866 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.updateByPrimaryKey - ==>  Preparing: update neuedu_cart set user_id = ?, product_id = ?, quantity = ?, checked = ?, update_time = now() where id = ? 
-23:47:52.867 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.updateByPrimaryKey - ==> Parameters: 76(Integer), 1(Integer), 20(Integer), 1(Integer), 206(Integer)
-23:47:52.875 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.updateByPrimaryKey - <==    Updates: 1
-23:47:52.876 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? 
-23:47:52.876 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - ==> Parameters: 76(Integer)
-23:47:52.878 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - <==      Total: 1
-23:47:52.879 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
-23:47:52.879 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
-23:47:52.881 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
-23:47:52.882 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - ==>  Preparing: select count(*) from neuedu_cart where user_id=? and checked=0 
-23:47:52.882 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - ==> Parameters: 76(Integer)
-23:47:52.883 [http-nio-8888-exec-2] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - <==      Total: 1
-23:49:03.179 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? 
-23:49:03.180 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - ==> Parameters: 76(Integer)
-23:49:03.181 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - <==      Total: 1
-23:49:03.181 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
-23:49:03.182 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
-23:49:03.183 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
-23:49:03.183 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - ==>  Preparing: select count(*) from neuedu_cart where user_id=? and checked=0 
-23:49:03.184 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - ==> Parameters: 76(Integer)
-23:49:03.184 [http-nio-8888-exec-4] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - <==      Total: 1
+23:31:53.534 [main] INFO  com.neuedu.BusinessApplication - Starting BusinessApplication on LAPTOP-DJSFELAJ with PID 1124 (D:\workspace\business\target\classes started by 86189 in D:\workspace\business)
+23:31:53.543 [main] INFO  com.neuedu.BusinessApplication - No active profile set, falling back to default profiles: default
+23:31:54.014 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+23:31:54.326 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+23:31:54.327 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+23:31:54.327 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+23:31:54.429 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+23:31:54.530 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
+23:31:54.542 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
+23:31:55.150 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+23:31:55.497 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+23:31:55.643 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+23:31:55.661 [main] INFO  com.neuedu.BusinessApplication - Started BusinessApplication in 2.759 seconds (JVM running for 4.102)
+23:37:50.892 [http-nio-8888-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:37:51.060 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.countUsername - ==>  Preparing: select count(*) from neuedu_user where username=? 
+23:37:51.098 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.countUsername - ==> Parameters: abc(String)
+23:37:51.140 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.countUsername - <==      Total: 1
+23:37:51.147 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.findUserByUsernameAndpassword - ==>  Preparing: select id, username, password, email, phone, question, answer, role, create_time, update_time, ip from neuedu_user where username=? and password=? 
+23:37:51.147 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.findUserByUsernameAndpassword - ==> Parameters: abc(String), ecbbcb2ca53760520921aa2962038ce3(String)
+23:37:51.152 [http-nio-8888-exec-1] DEBUG com.neuedu.dao.UserMapper.findUserByUsernameAndpassword - <==      Total: 1
+23:38:00.457 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
+23:38:00.460 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+23:38:00.469 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
+23:38:00.515 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? and product_id=? 
+23:38:00.515 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - ==> Parameters: 76(Integer), 1(Integer)
+23:38:00.522 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - <==      Total: 1
+23:38:00.522 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.updateByPrimaryKey - ==>  Preparing: update neuedu_cart set user_id = ?, product_id = ?, quantity = ?, checked = ?, update_time = now() where id = ? 
+23:38:00.523 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.updateByPrimaryKey - ==> Parameters: 76(Integer), 1(Integer), 30(Integer), 1(Integer), 206(Integer)
+23:38:00.535 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.updateByPrimaryKey - <==    Updates: 1
+23:38:00.536 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? 
+23:38:00.536 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - ==> Parameters: 76(Integer)
+23:38:00.538 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - <==      Total: 1
+23:38:00.539 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
+23:38:00.539 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+23:38:00.542 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
+23:38:00.544 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - ==>  Preparing: select count(*) from neuedu_cart where user_id=? and checked=0 
+23:38:00.545 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - ==> Parameters: 76(Integer)
+23:38:00.546 [http-nio-8888-exec-3] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - <==      Total: 1
+23:38:03.105 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndChecked - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? and checked=1 
+23:38:03.106 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndChecked - ==> Parameters: 76(Integer)
+23:38:03.109 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndChecked - <==      Total: 1
+23:38:03.110 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
+23:38:03.110 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+23:38:03.111 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
+23:38:03.114 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.OrderMapper.insert - ==>  Preparing: insert into neuedu_order (id, user_id, order_no, shipping_id, payment, payment_type, postage, status, payment_time, send_time, end_time, close_time, create_time, update_time) values (?, ?, ?, ?, ?, ?, ?, ?, null, null, null, null, now(), now()) 
+23:38:03.120 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.OrderMapper.insert - ==> Parameters: null, 76(Integer), 1582558683114(Long), 1(Integer), 3000.00(BigDecimal), 1(Integer), 0(Integer), 10(Integer)
+23:38:03.126 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.OrderMapper.insert - <==    Updates: 1
+23:38:03.143 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.OrderItemMapper.insertBatch - ==>  Preparing: insert into neuedu_order_item ( user_id, order_no, product_id, product_name, product_image, current_unit_price, quantity, total_price, create_time, update_time) values (?, ?, ?, ?, ?, ?, ?, ?, now(),now()) 
+23:38:03.144 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.OrderItemMapper.insertBatch - ==> Parameters: 76(Integer), 1582558683114(Long), 1(Integer), mi8(String), null, 3000.00(BigDecimal), 30(Integer), 90000.0(BigDecimal)
+23:38:03.148 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.OrderItemMapper.insertBatch - <==    Updates: 1
+23:38:03.149 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
+23:38:03.149 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+23:38:03.153 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
+23:38:03.154 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.reduceStock - ==>  Preparing: update neuedu_product set stock = ?, update_time = now() where id = ? 
+23:38:03.154 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.reduceStock - ==> Parameters: 970(Integer), 1(Integer)
+23:38:03.158 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.ProductMapper.reduceStock - <==    Updates: 1
+23:38:03.158 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.CartMapper.deleteBatch - ==>  Preparing: delete from neuedu_cart where id in ( ? ) 
+23:38:03.159 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.CartMapper.deleteBatch - ==> Parameters: 206(Integer)
+23:38:03.162 [http-nio-8888-exec-5] DEBUG com.neuedu.dao.CartMapper.deleteBatch - <==    Updates: 1
+23:39:47.452 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
+23:39:47.452 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+23:39:47.454 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
+23:39:47.455 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? and product_id=? 
+23:39:47.455 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - ==> Parameters: 76(Integer), 1(Integer)
+23:39:47.458 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndProductId - <==      Total: 0
+23:39:47.458 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.insert - ==>  Preparing: insert into neuedu_cart (id, user_id, product_id, quantity, checked, create_time, update_time) values (?, ?, ?, ?, ?, now(), now()) 
+23:39:47.459 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.insert - ==> Parameters: null, 76(Integer), 1(Integer), 10(Integer), 1(Integer)
+23:39:47.463 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.insert - <==    Updates: 1
+23:39:47.463 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? 
+23:39:47.463 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - ==> Parameters: 76(Integer)
+23:39:47.465 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.findCartByUserId - <==      Total: 1
+23:39:47.465 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
+23:39:47.465 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+23:39:47.467 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
+23:39:47.467 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - ==>  Preparing: select count(*) from neuedu_cart where user_id=? and checked=0 
+23:39:47.467 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - ==> Parameters: 76(Integer)
+23:39:47.468 [http-nio-8888-exec-9] DEBUG com.neuedu.dao.CartMapper.totalCountByUnchecked - <==      Total: 1
+23:40:02.280 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndChecked - ==>  Preparing: select id, user_id, product_id, quantity, checked, create_time, update_time from neuedu_cart where user_id=? and checked=1 
+23:40:02.281 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndChecked - ==> Parameters: 76(Integer)
+23:40:02.284 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CartMapper.findCartByUserIdAndChecked - <==      Total: 1
+23:40:02.285 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
+23:40:02.285 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+23:40:02.287 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
+23:40:02.288 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.OrderMapper.insert - ==>  Preparing: insert into neuedu_order (id, user_id, order_no, shipping_id, payment, payment_type, postage, status, payment_time, send_time, end_time, close_time, create_time, update_time) values (?, ?, ?, ?, ?, ?, ?, ?, null, null, null, null, now(), now()) 
+23:40:02.288 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.OrderMapper.insert - ==> Parameters: null, 76(Integer), 1582558802288(Long), 1(Integer), 3000.00(BigDecimal), 1(Integer), 0(Integer), 10(Integer)
+23:40:02.292 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.OrderMapper.insert - <==    Updates: 1
+23:40:02.293 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.OrderItemMapper.insertBatch - ==>  Preparing: insert into neuedu_order_item ( user_id, order_no, product_id, product_name, product_image, current_unit_price, quantity, total_price, create_time, update_time) values (?, ?, ?, ?, ?, ?, ?, ?, now(),now()) 
+23:40:02.294 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.OrderItemMapper.insertBatch - ==> Parameters: 76(Integer), 1582558802288(Long), 1(Integer), mi8(String), null, 3000.00(BigDecimal), 10(Integer), 30000.0(BigDecimal)
+23:40:02.297 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.OrderItemMapper.insertBatch - <==    Updates: 1
+23:40:02.297 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==>  Preparing: select id, category_id, name, subtitle, main_image, price, stock, status, is_new, is_hot, is_banner, create_time, update_time, sub_images, detail from neuedu_product where id = ? 
+23:40:02.297 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - ==> Parameters: 1(Integer)
+23:40:02.298 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.selectByPrimaryKey - <==      Total: 1
+23:40:02.299 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.reduceStock - ==>  Preparing: update neuedu_product set stock = ?, update_time = now() where id = ? 
+23:40:02.299 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.reduceStock - ==> Parameters: 960(Integer), 1(Integer)
+23:40:02.303 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.ProductMapper.reduceStock - <==    Updates: 1
+23:40:02.304 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CartMapper.deleteBatch - ==>  Preparing: delete from neuedu_cart where id in ( ? ) 
+23:40:02.304 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CartMapper.deleteBatch - ==> Parameters: 207(Integer)
+23:40:02.307 [http-nio-8888-exec-6] DEBUG com.neuedu.dao.CartMapper.deleteBatch - <==    Updates: 1

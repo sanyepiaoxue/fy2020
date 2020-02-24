@@ -145,6 +145,10 @@ public class ProductServiceImpl implements IProductService {
         }
 
         Product product = productMapper.selectByPrimaryKey(productId);
+        if(product==null){
+            return ServerResponse.serverResponseByFail(StatusEnum.PRODUCT_NOT_EXISTS.getStatus(),StatusEnum.PRODUCT_NOT_EXISTS.getDesc());
+        }
+
         if (product.getStatus()!= Consts.ProductStatusEnum.PRODUCT_ONLINE.getStatus()){
             //商品已经下架或者被删除了
             return ServerResponse.serverResponseByFail(StatusEnum.PRODUCT_OFFLINEORDELETE_FAIL.getStatus(),StatusEnum.PRODUCT_OFFLINEORDELETE_FAIL.getDesc());
@@ -154,6 +158,26 @@ public class ProductServiceImpl implements IProductService {
 
         return ServerResponse.serverResponseBySucess(null,productDetailVO);
     }
+
+    @Override
+    public ServerResponse reduceStocke(Integer productId, Integer quantity) {
+
+        if (productId==null || quantity==null){
+            return ServerResponse.serverResponseByFail(StatusEnum.PARAM_NOT_EMPTY.getStatus(),StatusEnum.PARAM_NOT_EMPTY.getDesc());
+        }
+        //扣库存
+        Product product = productMapper.selectByPrimaryKey(productId);
+        if (product == null){
+            return ServerResponse.serverResponseByFail(StatusEnum.PRODUCT_NOT_EXISTS.getStatus(),StatusEnum.PRODUCT_NOT_EXISTS.getDesc());
+        }
+        int count = productMapper.reduceStock(productId,product.getStock()-quantity);
+        if (count <= 0){
+            return ServerResponse.serverResponseByFail(StatusEnum.REDUCE_STOCK_FAIL.getStatus(),StatusEnum.REDUCE_STOCK_FAIL.getDesc());
+        }
+
+        return ServerResponse.serverResponseBySucess();
+    }
+
     private ProductDetailVO product2vo(Product product){
         ProductDetailVO vo=new ProductDetailVO();
 

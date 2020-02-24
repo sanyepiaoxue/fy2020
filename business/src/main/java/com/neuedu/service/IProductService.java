@@ -12,4 +12,7 @@ public interface IProductService {
 
     //前台-查看详情
     ServerResponse detail(Integer productId);
+
+    //商品扣库存
+    ServerResponse reduceStocke(Integer productId,Integer quantity);
 }

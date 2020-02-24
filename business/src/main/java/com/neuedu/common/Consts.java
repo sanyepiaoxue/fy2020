@@ -67,4 +67,39 @@ public class Consts {
     }
 
 
+    public enum OrderStatusEnum{
+
+        CANCELED(0,"已取消"),
+        UNPAY(10,"未付款"),
+        PAYED(20,"已付款"),
+        SEND(40,"已发货"),
+        SUCCESS(50,"交易成功"),
+        CLOSE(60,"交易关闭"),
+
+
+        ;
+        private int status;
+        private String desc;
+
+        OrderStatusEnum(int status, String desc) {
+            this.status = status;
+            this.desc = desc;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+    }
 }
