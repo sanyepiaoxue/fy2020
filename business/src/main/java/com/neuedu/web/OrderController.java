@@ -22,11 +22,22 @@ public class OrderController {
     public ServerResponse create(Integer shippingId, HttpSession session){
         //step1:先判断用户是否登录
         User user=(User)session.getAttribute(Consts.USER);
-        if(user==null){//未登录
+        /*if(user==null){//未登录
             return ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
-        }
+        }*/
 
         return orderService.createOrder(user.getId(),shippingId);
     }
+
+    @RequestMapping("cancel.do")
+    public ServerResponse cancel(Long orderNo){
+        return orderService.cancelOrder(orderNo);
+    }
+
+
+
+
+
+
 
 }

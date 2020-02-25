@@ -23,9 +23,9 @@ public class CartController {
     public ServerResponse list(HttpSession session){
         //1:先判断用户是否登录
         User user = (User)session.getAttribute(Consts.USER);
-        if (user == null){//未登录
+        /*if (user == null){//未登录
             return ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
-        }
+        }*/
 
         return cartService.list(user.getId());
     }
@@ -34,9 +34,9 @@ public class CartController {
     public ServerResponse add(Integer productId,Integer count,HttpSession session){
         //1.先判断用户是否登录
         User user = (User)session.getAttribute(Consts.USER);
-        if (user == null){//未登录
+        /*if (user == null){//未登录
             return ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
-        }
+        }*/
         return cartService.add(user.getId(),productId,count);
     }
 }

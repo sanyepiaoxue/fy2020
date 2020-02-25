@@ -160,17 +160,17 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public ServerResponse reduceStocke(Integer productId, Integer quantity) {
+    public ServerResponse updateStock(Integer productId, Integer quantity,int type) {
 
         if (productId==null || quantity==null){
             return ServerResponse.serverResponseByFail(StatusEnum.PARAM_NOT_EMPTY.getStatus(),StatusEnum.PARAM_NOT_EMPTY.getDesc());
         }
-        //扣库存
+        //更新库存
         Product product = productMapper.selectByPrimaryKey(productId);
         if (product == null){
             return ServerResponse.serverResponseByFail(StatusEnum.PRODUCT_NOT_EXISTS.getStatus(),StatusEnum.PRODUCT_NOT_EXISTS.getDesc());
         }
-        int count = productMapper.reduceStock(productId,product.getStock()-quantity);
+        int count = productMapper.reduceStock(productId,type==0?product.getStock()-quantity:product.getStock()+quantity);
         if (count <= 0){
             return ServerResponse.serverResponseByFail(StatusEnum.REDUCE_STOCK_FAIL.getStatus(),StatusEnum.REDUCE_STOCK_FAIL.getDesc());
         }

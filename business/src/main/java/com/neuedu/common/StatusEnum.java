@@ -43,8 +43,13 @@ public enum StatusEnum {
 
     ORDER_CREATE_FAIL(29,"订单创建失败"),
     ORDER_ITEM_CREATE_FAIL(30,"订单明细创建失败"),
-    REDUCE_STOCK_FAIL(31,"商品扣库存失败"),
-    CART_CLEAN_FAIL(32,"购物车清空失败")
+    REDUCE_STOCK_FAIL(31,"商品更新库存失败"),
+    CART_CLEAN_FAIL(32,"购物车清空失败"),
+    ORDER_NOT_EXISTS(33,"订单明不存在"),
+    ORDER_NOT_CANCEL(34,"订单无法取消"),
+    ORDER_CANCEL_FAIL(35,"订单取消失败"),
+    ADDRESS_ADD_FAIL(36,"地址添加失败")
+
     ;
 
     private int status;//状态码值

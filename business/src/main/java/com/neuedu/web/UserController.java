@@ -17,13 +17,13 @@ public class UserController {
     IUserService userService;
 
     //注册
-    @RequestMapping("/register")
+    @RequestMapping("/register.do")
     public ServerResponse register(User user){
         return userService.registerLogic(user);
     }
 
     //登录接口
-    @RequestMapping("/login")
+    @RequestMapping("/login.do")
     public ServerResponse login(String username, String password, HttpSession session){
         ServerResponse response = userService.loginLogic(username,password);
         if (response.isSucess()){
@@ -34,7 +34,7 @@ public class UserController {
     }
 
     //退出登录接口
-    @RequestMapping("/logout")
+    @RequestMapping("/logout.do")
     public ServerResponse logout(HttpSession session){
         session.removeAttribute(Consts.USER);
         return ServerResponse.serverResponseBySucess();

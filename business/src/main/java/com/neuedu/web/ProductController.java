@@ -88,9 +88,9 @@ public class ProductController {
     public ServerResponse addOrUpdate(Product product, HttpSession session){
         //1.先判断用户是否登录
         User user = (User)session.getAttribute(Consts.USER);
-        if (user==null){//未登录
+        /*if (user==null){//未登录
             return ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
-        }
+        }*/
         //2.只有管理员权限才能添加类别
         if (user.getRole() != RoleEnum.ADMIN.getRole()){//无管理员权限
             return ServerResponse.serverResponseByFail(StatusEnum.NO_AUTHORITY.getStatus(),StatusEnum.NO_AUTHORITY.getDesc());

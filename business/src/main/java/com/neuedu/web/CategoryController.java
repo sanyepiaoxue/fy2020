@@ -21,15 +21,15 @@ public class CategoryController {
     ICategoryService categoryService;
 
     //类别添加
-    @RequestMapping("add_category")
+    @RequestMapping("add_category.do")
     public ServerResponse addCategory(@RequestParam("parentId") Integer parentId,
                                       @RequestParam("categoryName") String categoryName,
                                       HttpSession session){
         //step1:先判断用户是否登录
         User user = (User)session.getAttribute(Consts.USER);
-        if (user == null){//未登录
+        /*if (user == null){//未登录
             return ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
-        }
+        }*/
         //step2:只有管理员权限才能添加类别
         if (user.getRole()!= RoleEnum.ADMIN.getRole()){//无管理员权限
             return ServerResponse.serverResponseByFail(StatusEnum.NO_AUTHORITY.getStatus(),StatusEnum.NO_AUTHORITY.getDesc());
@@ -43,9 +43,9 @@ public class CategoryController {
                                             HttpSession session){
         //step1:先判断用户是否登录
         User user = (User)session.getAttribute(Consts.USER);
-        if (user == null){
+        /*if (user == null){
             return ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
-        }
+        }*/
 
         //step2:只有管理员权限才能添加类别
         if (user.getRole()!=RoleEnum.ADMIN.getRole()){//无管理权限

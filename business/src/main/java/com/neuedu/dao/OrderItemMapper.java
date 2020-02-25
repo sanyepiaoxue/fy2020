@@ -47,4 +47,9 @@ public interface OrderItemMapper {
     int updateByPrimaryKey(OrderItem record);
 
     int insertBatch(@Param("orderItemList") List<OrderItem> orderItems);
+
+
+    List<OrderItem> findOrderItemByOrderNo(@Param("orderNo") Long orderNo);
+
+
 }
