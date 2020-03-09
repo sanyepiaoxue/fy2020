@@ -1,0 +1,81 @@
+server:
+  port: 8888
+
+spring:
+  resources:
+    static-locations: classpath:/static/
+
+
+  #mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    #连接池
+    druid:
+      filters: stat
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select now()
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+
+
+
+#mybatis
+mybatis:
+  mapper-locations: classpath:/com/neuedu/mapper/*.xml
+  type-aliases-package: com.neuedu.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+    map-underscore-to-camel-case: true
+
+
+#log4j2配置
+logging:
+  config: classpath:log4j2-dev.xml
+  level:
+    com.neuedu.dao: DEBUG
+
+
+upload:
+  path: D:/upload/temp
+
+redis:
+  maxTotal: 8
+  maxIdle: 8
+  minIdle: 0
+  blockWhenExhausted: true
+  maxWaitMillis: 10000
+  testOnBorrow: true
+  testOnReturn: true
+  jmxEnabled: true
+  redisHost: 182.92.222.63
+  redisPort: 6379
+  redisPassword: Hanlei2020520
+  timeout: 1000
+
+
+alipay:
+  callback:
+    url: http://4thmd8.natappfree.cc/order/alipay_callback.do
+  qrcode:
+    path: C:\\Users\\86189\\Desktop\\Online courses
+  public:
+    key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkNTomaapr+NROcaR4mXgFM/VNBEdH/dZ05tL8mN5SY56hXyW5GBV2wX+cmZ731ym4wV9/EzV/f2kN9gZMogjhg8lQKN7+SAnRQEt4ZIe45bUHKLTsqcAbCNRTJ6zE3Gra+5JgRgnbrTYagBPSkbXdbRBnMRkzCUUaCUbQCj0fn/y01uq1ERKRscUWjycuW+TWDts08miGHxVRkNI7zAsgPu85F1cGcoJILF8OgGCO1G2br7a8v6YEfr71a+3kd2fHpRNiBmkeIwfa686Lf+SwZoDeHqt+He2aHG/Jq7kgmX6tsvdxGVUWxwtXjqAJqlty0TeGorIaNyqeCilZ2SfbQIDAQAB
+
+token:
+  timeout: 10
+
+ftp:
+  host: 182.92.222.63
+  user: ftphan
+  pass: qqhanlei123

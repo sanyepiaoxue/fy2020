@@ -4,7 +4,10 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisSentinelPool;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Configuration
 public class JedisConfig {
@@ -12,9 +15,9 @@ public class JedisConfig {
     @Value("${redis.maxTotal}")
     private Integer maxTotal;
     @Value("${redis.maxIdle}")
-    private Integer  maxIdle;
+    private Integer maxIdle;
     @Value("${redis.minIdle}")
-    private Integer  minIdle;
+    private Integer minIdle;
     @Value("${redis.blockWhenExhausted}")
     private boolean blockWhenExhausted;
     @Value("${redis.maxWaitMillis}")
@@ -49,12 +52,26 @@ public class JedisConfig {
         return config;
     }
 
-    //JedisPool的初始化，交给Ioc管理
+
     @Bean
-    public JedisPool jedisPool(){
-        JedisPool jedisPool = new JedisPool(genericObjectPoolConfig(),redisHost,redisPort,timeout,redisPass);
-        return jedisPool;
+    public JedisSentinelPool jedisSentinelPool(){
+
+        /**
+         * 内部本质还是去连接master主机：
+         * 参数masterName表示master名称，
+         * sentinelSet表示三个哨兵的IP地址和端口号，
+         * genericObjectPoolConfig()：连接池的配置
+         * timeout：超时时间
+         * redisPass：主节点密码
+         */
+
+        Set<String> sentinelSet = new HashSet<>();
+        sentinelSet.add("182.92.222.63:26379");
+        sentinelSet.add("182.92.222.63:26380");
+        sentinelSet.add("182.92.222.63:26381");
+
+        JedisSentinelPool jedisSentinelPool = new JedisSentinelPool("mymaster",
+                sentinelSet,genericObjectPoolConfig(),timeout,redisPass);
+        return jedisSentinelPool;
     }
-
-
 }

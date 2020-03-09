@@ -9,4 +9,11 @@ public interface IOrderService {
 
     //取消订单
     ServerResponse cancelOrder(Long orderNo);
+
+    //根据订单号查询订单信息
+    ServerResponse findOrderByOrderNo(Long orderNo);
+
+    //支付成功后，修改订单状态
+    ServerResponse updateOrder(Long orderNo,String payTime,Integer orderStatus);
+
 }

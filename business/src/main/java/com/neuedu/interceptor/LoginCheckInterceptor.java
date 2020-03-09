@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 @Component
@@ -34,15 +35,25 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         }
 
         //重写Response
-        response.reset();//重置
-        response.addHeader("Content-Type","application/json;charset=utf-8");
-        PrintWriter printWriter = response.getWriter();//获得字符打印流
-        ServerResponse serverResponse = ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
-        Gson gson = new Gson();
-        String json = gson.toJson(serverResponse);
-        printWriter.write(json);//向前端打印
-        printWriter.flush();//将缓冲区的数据强制输出，用于清空缓冲区，若直接调用close()方法，则可能会丢失缓冲区的数据。所以通俗来讲它起到的是刷新的作用
-        printWriter.close();//关闭流
+        PrintWriter printWriter=null;
+        try {
+            response.reset();//重置
+            response.addHeader("Content-Type","application/json;charset=utf-8");
+            printWriter = response.getWriter();//获得字符打印流
+            ServerResponse serverResponse = ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
+            Gson gson = new Gson();
+            String json = gson.toJson(serverResponse);
+            printWriter.write(json);//向前端打印
+            printWriter.flush();//将缓冲区的数据强制输出，用于清空缓冲区，若直接调用close()方法，则可能会丢失缓冲区的数据。所以通俗来讲它起到的是刷新的作用
+            printWriter.close();//关闭流
+        }catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(printWriter!=null){
+                printWriter.close();
+            }
+        }
+
         return false;
     }
 

@@ -1,9 +1,12 @@
 package com.neuedu.common;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisSentinelPool;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +20,8 @@ import java.util.Set;
 public class RedisApi {
 
     @Autowired
-    private JedisPool jedisPool;
+    //private JedisPool jedisPool;
+    private JedisSentinelPool jedisPool;
 
     /**
      * 字符串
@@ -25,6 +29,13 @@ public class RedisApi {
      */
 
     public String set(String key,String value){
+
+        HostAndPort hostAndPort = jedisPool.getCurrentHostMaster();
+        System.out.println("====================");
+        System.out.println(hostAndPort.getHost());
+        System.out.println(hostAndPort.getPort());
+
+
         Jedis jedis = jedisPool.getResource();
         String result = jedis.set(key,value);
         jedis.close();
@@ -75,6 +86,16 @@ public class RedisApi {
         jedis.close();
         return result;
     }
+
+    //删除
+    public Long remove(String key){
+        Jedis jedis = jedisPool.getResource();
+        Long result = jedis.del(key);
+        jedis.close();
+        return result;
+    }
+
+
 
     /**
      * 字符串

@@ -130,7 +130,7 @@ public class ProductServiceImpl implements IProductService {
         }
 
         //构建分页模型
-        PageInfo pageInfo = new PageInfo(productList);
+        PageInfo pageInfo = new PageInfo(productListVOList);
 
         //5.返回结果
         return ServerResponse.serverResponseBySucess("",pageInfo);

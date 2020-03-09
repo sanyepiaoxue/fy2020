@@ -2,6 +2,7 @@ package com.neuedu.web;
 
 import com.neuedu.common.RedisApi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,10 +12,10 @@ public class RedisController {
     @Autowired
     RedisApi redisApi;
 
-    @RequestMapping("/redis")
-    public String set(){
-        String value = redisApi.set("neusoft","hello");
-        return value;
+    @RequestMapping("/redis/{key}/{value}")
+    public String set(@PathVariable("key")String key,@PathVariable("value")String value){
+        String value1 = redisApi.set(key,value);
+        return value1;
     }
 
     @RequestMapping("/redis/hash")

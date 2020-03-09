@@ -5,6 +5,7 @@ import com.neuedu.common.ServerResponse;
 import com.neuedu.common.StatusEnum;
 import com.neuedu.dao.OrderItemMapper;
 import com.neuedu.dao.OrderMapper;
+import com.neuedu.exception.BusinessException;
 import com.neuedu.pojo.Cart;
 import com.neuedu.pojo.Order;
 import com.neuedu.pojo.OrderItem;
@@ -18,6 +19,9 @@ import com.neuedu.vo.OrderVO;
 import com.neuedu.vo.ProductDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -37,6 +41,8 @@ public class OrderServiceImpl implements IOrderService{
     OrderItemMapper orderItemMapper;
 
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ,timeout = 10,readOnly =false,rollbackFor = {BusinessException.class},
+            propagation = Propagation.REQUIRED)
     @Override
     public ServerResponse createOrder(Integer userId, Integer shippingId) {
 
@@ -75,7 +81,7 @@ public class OrderServiceImpl implements IOrderService{
 
         int count = orderItemMapper.insertBatch(orderItemList);
         if (count <= 0){
-            return ServerResponse.serverResponseByFail(StatusEnum.ORDER_ITEM_CREATE_FAIL.getStatus(),StatusEnum.ORDER_ITEM_CREATE_FAIL.getDesc());
+            throw  new BusinessException(StatusEnum.ORDER_ITEM_CREATE_FAIL.getStatus(),StatusEnum.ORDER_ITEM_CREATE_FAIL.getDesc());
         }
         //6.减商品库存
         reduceStock(orderItemList);
@@ -129,10 +135,42 @@ public class OrderServiceImpl implements IOrderService{
         return ServerResponse.serverResponseBySucess();
     }
 
+    @Override
+    public ServerResponse findOrderByOrderNo(Long orderNo) {
+        //参数非空校验
+        if (orderNo == null){
+            return ServerResponse.serverResponseByFail(StatusEnum.PARAM_NOT_EMPTY.getStatus(),StatusEnum.PARAM_NOT_EMPTY.getDesc());
+        }
+        //根据订单号查询订单
+        Order order = orderMapper.findOrderByOrderNo(orderNo);
+        if (order == null){
+            return ServerResponse.serverResponseByFail(StatusEnum.ORDER_NOT_EXISTS.getStatus(),StatusEnum.ORDER_NOT_EXISTS.getDesc());
+        }
+        List<OrderItem> orderItemList = orderItemMapper.findOrderItemByOrderNo(orderNo);
+        OrderVO orderVO = assembleOrderVo(order,orderItemList,order.getShippingId());
+
+        return ServerResponse.serverResponseBySucess(null,orderVO);
+    }
+
+    @Override
+    public ServerResponse updateOrder(Long orderNo, String payTime, Integer orderStatus) {
+        if (orderNo==null||payTime==null||orderStatus==null){
+            return ServerResponse.serverResponseByFail(StatusEnum.PARAM_NOT_EMPTY.getStatus(),StatusEnum.PARAM_NOT_EMPTY.getDesc());
+        }
+        int count = orderMapper.updateOrder(orderNo,DateUtils.str2Date(payTime),orderStatus);
+        if (count<=0){
+            return ServerResponse.serverResponseByFail(StatusEnum.ORDER_STATUS_FAIL.getStatus(),StatusEnum.ORDER_STATUS_FAIL.getDesc());
+        }
+
+
+        return ServerResponse.serverResponseBySucess();
+    }
+
 
     public OrderVO assembleOrderVo(Order order,List<OrderItem> orderItemList,Integer shippingId){
         OrderVO orderVO = new OrderVO();
 
+        orderVO.setUserId(order.getUserId());
         orderVO.setOrderNo(order.getOrderNo());
         orderVO.setPayment(order.getPayment());
         orderVO.setPaymentType(order.getPaymentType());

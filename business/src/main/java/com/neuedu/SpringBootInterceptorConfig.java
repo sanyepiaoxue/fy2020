@@ -1,5 +1,6 @@
 package com.neuedu;
 
+import com.neuedu.interceptor.AutoIdempontentInterceptor;
 import com.neuedu.interceptor.LoginCheckInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
@@ -14,9 +15,13 @@ public class SpringBootInterceptorConfig implements WebMvcConfigurer {
 
     @Autowired
     LoginCheckInterceptor loginCheckInterceptor;
+    @Autowired
+    AutoIdempontentInterceptor autoIdempontentInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+
+        registry.addInterceptor(autoIdempontentInterceptor);
 
         List<String> loginPath = new ArrayList<>();
         loginPath.add("/manage/**");
@@ -30,6 +35,7 @@ public class SpringBootInterceptorConfig implements WebMvcConfigurer {
         excludePath.add("/user/register.do");
         excludePath.add("/user/forget_get_question.do");
         excludePath.add("/manage/user/login.do");
+        excludePath.add("/order/alipay_callback.do");
 
         registry.addInterceptor(loginCheckInterceptor).
                 addPathPatterns(loginPath).//添加需要拦截的路径

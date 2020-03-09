@@ -5,6 +5,7 @@ import java.util.List;
 
 public class OrderVO {
 
+    private Integer userId;
     private Long orderNo;
     private BigDecimal payment;
     private Integer paymentType;
@@ -18,6 +19,14 @@ public class OrderVO {
     private Integer shippingId;
     private ShippingVO shippingVO;
     private List<OrderItemVO> orderItemVOList;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Long getOrderNo() {
         return orderNo;

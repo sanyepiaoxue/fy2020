@@ -1,5 +1,6 @@
 package com.neuedu.web;
 
+import com.neuedu.annotation.AutoIdempontent;
 import com.neuedu.common.Consts;
 import com.neuedu.common.ServerResponse;
 import com.neuedu.common.StatusEnum;
@@ -18,6 +19,7 @@ public class OrderController {
     @Resource
     IOrderService orderService;
 
+    @AutoIdempontent
     @RequestMapping("create.do")
     public ServerResponse create(Integer shippingId, HttpSession session){
         //step1:先判断用户是否登录
@@ -33,11 +35,6 @@ public class OrderController {
     public ServerResponse cancel(Long orderNo){
         return orderService.cancelOrder(orderNo);
     }
-
-
-
-
-
 
 
 }

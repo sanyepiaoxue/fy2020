@@ -3,6 +3,8 @@ package com.neuedu.common;
 public class Consts {
 
     public static final String USER="CURRENT_USER";
+    public static final String TOKEN_PREFIX="token_";
+    public static final String TOKEN_NAME="business_token";
 
     public enum ProductStatusEnum{
 
