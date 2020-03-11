@@ -47,7 +47,7 @@ public interface OrderMapper {
      */
     int updateByPrimaryKey(Order record);
 
-    //根据订单后查询订单
+    //根据订单号查询订单
     Order findOrderByOrderNo(@Param("orderNo") Long orderNo);
 
     int updateOrder(@Param("orderNo") Long orderNo,

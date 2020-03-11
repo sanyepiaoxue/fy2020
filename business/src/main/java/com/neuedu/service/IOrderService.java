@@ -18,4 +18,10 @@ public interface IOrderService {
 
     //获取订单的商品信息
     ServerResponse getOrder();
+
+    //获取订单list
+    ServerResponse list(Integer pageNum,Integer pageSize);
+
+    //订单详情
+    ServerResponse detail(Long orderNo);
 }

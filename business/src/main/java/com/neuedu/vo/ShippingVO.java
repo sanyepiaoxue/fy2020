@@ -9,6 +9,7 @@ public class ShippingVO {
     private String receiverMobile;
     private String receiverProvince;
     private String receiverCity;
+    private String receiverDistrict;
     private String receiverAddress;
     private String receiverZip;
     private String createTime;
@@ -101,5 +102,13 @@ public class ShippingVO {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getReceiverDistrict() {
+        return receiverDistrict;
+    }
+
+    public void setReceiverDistrict(String receiverDistrict) {
+        this.receiverDistrict = receiverDistrict;
     }
 }

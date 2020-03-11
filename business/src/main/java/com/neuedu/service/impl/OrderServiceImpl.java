@@ -1,14 +1,18 @@
 package com.neuedu.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neuedu.common.Consts;
 import com.neuedu.common.ServerResponse;
 import com.neuedu.common.StatusEnum;
 import com.neuedu.dao.OrderItemMapper;
 import com.neuedu.dao.OrderMapper;
+import com.neuedu.dao.ShippingMapper;
 import com.neuedu.exception.BusinessException;
 import com.neuedu.pojo.Cart;
 import com.neuedu.pojo.Order;
 import com.neuedu.pojo.OrderItem;
+import com.neuedu.pojo.Shipping;
 import com.neuedu.service.ICartService;
 import com.neuedu.service.IOrderService;
 import com.neuedu.service.IProductService;
@@ -17,6 +21,7 @@ import com.neuedu.utils.DateUtils;
 import com.neuedu.vo.OrderItemVO;
 import com.neuedu.vo.OrderVO;
 import com.neuedu.vo.ProductDetailVO;
+import com.neuedu.vo.ShippingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -39,6 +44,8 @@ public class OrderServiceImpl implements IOrderService{
     OrderMapper orderMapper;
     @Resource
     OrderItemMapper orderItemMapper;
+    @Autowired
+    ShippingMapper shippingMapper;
 
 
     @Transactional(isolation = Isolation.REPEATABLE_READ,timeout = 10,readOnly =false,rollbackFor = {BusinessException.class},
@@ -305,5 +312,93 @@ public class OrderServiceImpl implements IOrderService{
             orderItemVOList.add(convertOrderItemVo(orderItem));
         }
         return ServerResponse.serverResponseBySucess(null,orderItemVOList);
+    }
+
+    @Override
+    public ServerResponse list(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Order> orderList = orderMapper.selectAll();
+        List<OrderVO> orderVOList = new ArrayList<>();
+        for (Order order:orderList){
+            OrderVO orderVO = new OrderVO();
+            orderVO.setUserId(order.getUserId());
+            orderVO.setOrderNo(order.getOrderNo());
+            orderVO.setPayment(order.getPayment());
+            orderVO.setPaymentType(order.getPaymentType());
+            orderVO.setPostage(order.getPostage());
+            orderVO.setStatus(order.getStatus());
+            orderVO.setPaymentTime(DateUtils.date2Str(order.getPaymentTime()));
+            orderVO.setSendTime(DateUtils.date2Str(order.getSendTime()));
+            orderVO.setEndTime(DateUtils.date2Str(order.getEndTime()));
+            orderVO.setCreateTime(DateUtils.date2Str(order.getCreateTime()));
+            orderVO.setCloseTime(DateUtils.date2Str(order.getCloseTime()));
+
+            List<OrderItemVO> orderItemVOList = new ArrayList<>();
+            List<OrderItem> orderItemList = orderItemMapper.findOrderItemByOrderNo(order.getOrderNo());
+            for (OrderItem orderItem:orderItemList){
+                OrderItemVO orderItemVO = convertOrderItemVo(orderItem);
+                orderItemVOList.add(orderItemVO);
+            }
+
+            orderVO.setOrderItemVOList(orderItemVOList);
+            orderVOList.add(orderVO);
+        }
+        //构建分页模型
+        PageInfo pageInfo = new PageInfo(orderVOList);
+        return ServerResponse.serverResponseBySucess(null,pageInfo);
+    }
+
+    @Override
+    public ServerResponse detail(Long orderNo) {
+
+        if (orderNo == null){
+            return ServerResponse.serverResponseByFail(StatusEnum.PARAM_NOT_EMPTY.getStatus(),StatusEnum.PARAM_NOT_EMPTY.getDesc());
+        }
+        Order order = orderMapper.findOrderByOrderNo(orderNo);
+        List<OrderVO> orderVOList = new ArrayList<>();
+            OrderVO orderVO = new OrderVO();
+            orderVO.setUserId(order.getUserId());
+            orderVO.setOrderNo(order.getOrderNo());
+            orderVO.setPayment(order.getPayment());
+            orderVO.setPaymentType(order.getPaymentType());
+            orderVO.setPostage(order.getPostage());
+            orderVO.setStatus(order.getStatus());
+            orderVO.setPaymentTime(DateUtils.date2Str(order.getPaymentTime()));
+            orderVO.setSendTime(DateUtils.date2Str(order.getSendTime()));
+            orderVO.setEndTime(DateUtils.date2Str(order.getEndTime()));
+            orderVO.setCreateTime(DateUtils.date2Str(order.getCreateTime()));
+            orderVO.setCloseTime(DateUtils.date2Str(order.getCloseTime()));
+            orderVO.setShippingId(order.getShippingId());
+
+
+            List<OrderItemVO> orderItemVOList = new ArrayList<>();
+            List<OrderItem> orderItemList = orderItemMapper.findOrderItemByOrderNo(order.getOrderNo());
+            for (OrderItem orderItem:orderItemList){
+                OrderItemVO orderItemVO = convertOrderItemVo(orderItem);
+                orderItemVOList.add(orderItemVO);
+            }
+
+            orderVO.setOrderItemVOList(orderItemVOList);
+            orderVOList.add(orderVO);
+            Shipping shipping = shippingMapper.selectByPrimaryKey(order.getShippingId());
+            orderVO.setShippingVO(assembleShippingVO(shipping));
+
+        return ServerResponse.serverResponseBySucess(null,orderVOList);
+    }
+
+
+    private ShippingVO assembleShippingVO(Shipping shipping){
+        ShippingVO shippingVO = new ShippingVO();
+
+        shippingVO.setReceiverName(shipping.getReceiverName());
+        shippingVO.setReceiverPhone(shipping.getReceiverPhone());
+        shippingVO.setReceiverMobile(shipping.getReceiverMobile());
+        shippingVO.setReceiverProvince(shipping.getReceiverProvince());
+        shippingVO.setReceiverCity(shipping.getReceiverCity());
+        shippingVO.setReceiverDistrict(shipping.getReceiverDistrict());
+        shippingVO.setReceiverAddress(shipping.getReceiverAddress());
+        shippingVO.setReceiverZip(shipping.getReceiverZip());
+
+        return shippingVO;
     }
 }

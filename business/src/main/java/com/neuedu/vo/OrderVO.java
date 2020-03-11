@@ -1,8 +1,9 @@
 package com.neuedu.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.math.BigDecimal;
 import java.util.List;
-
 public class OrderVO {
 
     private Integer userId;
@@ -131,4 +132,5 @@ public class OrderVO {
     public void setOrderItemVOList(List<OrderItemVO> orderItemVOList) {
         this.orderItemVOList = orderItemVOList;
     }
+
 }
