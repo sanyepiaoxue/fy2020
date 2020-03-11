@@ -531,6 +531,16 @@ public class PayServiceImpl implements IPayService {
         return "success";
     }
 
+    @Override
+    public ServerResponse queryState(Long orderNo) {
 
-
+        if (orderNo==null){
+            return ServerResponse.serverResponseByFail(StatusEnum.PARAM_NOT_EMPTY.getStatus(),StatusEnum.PARAM_NOT_EMPTY.getDesc());
+        }
+        String result = payInfoMapper.queryState(orderNo);
+        if (result==null){
+            return ServerResponse.serverResponseByFail(StatusEnum.ORDER_QUERY_FAIL.getStatus(),StatusEnum.ORDER_QUERY_FAIL.getDesc());
+        }
+        return ServerResponse.serverResponseBySucess(null,result);
+    }
 }

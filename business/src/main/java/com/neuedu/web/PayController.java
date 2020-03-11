@@ -3,7 +3,9 @@ package com.neuedu.web;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.neuedu.annotation.AutoIdempontent;
+import com.neuedu.common.Consts;
 import com.neuedu.common.ServerResponse;
+import com.neuedu.pojo.User;
 import com.neuedu.service.IPayService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -65,5 +68,9 @@ public class PayController {
         return iPayService.callbackLogic(signMap);
     }
 
-
+    @RequestMapping("query_order_pay_status.do")
+    public ServerResponse query(HttpSession session,Long orderNo){
+        User user=(User)session.getAttribute(Consts.USER);
+        return iPayService.queryState(orderNo);
+    }
 }

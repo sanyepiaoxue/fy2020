@@ -57,7 +57,8 @@ public enum StatusEnum {
     ADDRESS_UPDATE_FAIL(42,"地址更新失败"),
     TOKEN_GENERATE_FAIL(43,"token获取失败"),
     TOKEN_EMPTY(44,"没有携带token"),
-    NOT_REPEATABLE(45,"不能重复提交")
+    NOT_REPEATABLE(45,"不能重复提交"),
+    ORDER_QUERY_FAIL(46,"该用户并没有该订单，查询失败"),
 
     ;
 

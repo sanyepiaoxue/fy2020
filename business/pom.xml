@@ -160,6 +160,14 @@
             <artifactId>hamcrest-core</artifactId>
             <version>1.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alipay.demo.trade</groupId>
+            <artifactId>apipay-trade-sdk</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/libs/alipay-trade-sdk-20161215.jar</systemPath>
+        </dependency>
         <!-- 支付宝依赖 end-->
 
         <!--ftpclient-->
@@ -188,10 +196,14 @@
     </dependencies>
 
     <build>
+        <finalName>business</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
             </plugin>
 
             <plugin>

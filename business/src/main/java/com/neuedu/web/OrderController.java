@@ -24,9 +24,7 @@ public class OrderController {
     public ServerResponse create(Integer shippingId, HttpSession session){
         //step1:先判断用户是否登录
         User user=(User)session.getAttribute(Consts.USER);
-        /*if(user==null){//未登录
-            return ServerResponse.serverResponseByFail(StatusEnum.NO_LOGIN.getStatus(),StatusEnum.NO_LOGIN.getDesc());
-        }*/
+
 
         return orderService.createOrder(user.getId(),shippingId);
     }
@@ -36,5 +34,9 @@ public class OrderController {
         return orderService.cancelOrder(orderNo);
     }
 
-
+    @RequestMapping("get_order_cart_product.do")
+    public ServerResponse get_order(HttpSession session){
+        User user=(User)session.getAttribute(Consts.USER);
+        return orderService.getOrder();
+    }
 }

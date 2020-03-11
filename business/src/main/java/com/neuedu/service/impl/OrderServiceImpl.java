@@ -297,9 +297,13 @@ public class OrderServiceImpl implements IOrderService{
         return ServerResponse.serverResponseBySucess(null,orderItemList);
     }
 
-
-
-
-
-
+    @Override
+    public ServerResponse getOrder() {
+        List<OrderItem> orderItemList = orderItemMapper.selectAll();
+        List<OrderItemVO> orderItemVOList = new ArrayList<>();
+        for (OrderItem orderItem:orderItemList){
+            orderItemVOList.add(convertOrderItemVo(orderItem));
+        }
+        return ServerResponse.serverResponseBySucess(null,orderItemVOList);
+    }
 }

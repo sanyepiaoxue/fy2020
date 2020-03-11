@@ -9,6 +9,6 @@ public interface IPayService {
 
     String callbackLogic(Map<String,String> signParam);
 
-    /*//查询订单状态
-    ServerResponse queryPay(Long orderNo);*/
+    //查询订单状态
+    ServerResponse queryState(Long orderNo);
 }

@@ -16,4 +16,6 @@ public interface IOrderService {
     //支付成功后，修改订单状态
     ServerResponse updateOrder(Long orderNo,String payTime,Integer orderStatus);
 
+    //获取订单的商品信息
+    ServerResponse getOrder();
 }
